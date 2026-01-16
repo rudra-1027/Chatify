@@ -3,6 +3,7 @@ import {Server, Socket} from 'socket.io';
 import http from "http";
 import connectDB from './db.js';
 const app = express();
+app.set("trust proxy", 1);
 import routes  from './routes/auth.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
