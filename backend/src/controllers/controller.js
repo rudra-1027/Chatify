@@ -49,9 +49,12 @@ const app=express();
     await userInfo.save();
        
         const token=await user.genrateToken();
-       res.cookie("token",token,{
-        maxAge:1 * 24 * 60 * 60 * 1000
-       })
+      res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,         
+  sameSite: "lax",       
+  maxAge: 24 * 60 * 60 * 1000
+});
         res.redirect("/setProfile");
 
        
@@ -74,9 +77,12 @@ const login= async(req, res) => {
        return res.send(`<script>alert("The pass does not match"); window.location.href = "/login";</script>`)
        }
        const token=await exist.genrateToken();
-       res.cookie("token",token,{
-        maxAge:1 * 24 * 60 * 60 * 1000
-       })
+         res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,         
+  sameSite: "lax",       
+  maxAge: 24 * 60 * 60 * 1000
+});
        res.redirect('/home');
         
        
@@ -390,11 +396,12 @@ const getMessage=async (req,res)=>{
 }
 const logout=async(req,res)=>{
     try {
-    res.clearCookie("token", {
-      httpOnly: true,
-      secure: true,        
-      sameSite: "strict",
-    });
+   res.clearCookie("token", {
+  httpOnly: true,
+  secure: true,
+  sameSite: "lax",
+});
+
 
     return res.send(`<script>alert("Logged out suceesfully!"); window.location.href = "/login";</script>`)
   } catch (err) {
