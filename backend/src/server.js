@@ -20,10 +20,13 @@ const __dirname=path.dirname(__filename);
 const server=http.createServer(app);
 
 const io = new Server(server, {
-  origin: process.env.FRONTEND_URL, // your frontend
-  credentials: true,
+  cors: {
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
     methods: ["GET", "POST"],
+  }
 });
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));  // for HTML form submissions (application/x-www-form-urlencoded)
 await connectDB();
