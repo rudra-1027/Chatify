@@ -20,7 +20,8 @@ const __dirname=path.dirname(__filename);
 const server=http.createServer(app);
 
 const io = new Server(server, {
-  origin: "http://localhost:5173", // your frontend
+  origin: process.env.FRONTEND_URL, // your frontend
+  credentials: true,
     methods: ["GET", "POST"],
 });
 app.use(express.json());
