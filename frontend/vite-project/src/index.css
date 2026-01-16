@@ -1,0 +1,8 @@
+@import "@themesberg/flowbite";
+@import "flowbite";  
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
