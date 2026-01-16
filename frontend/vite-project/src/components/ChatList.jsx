@@ -54,7 +54,7 @@ useEffect(() => {
   const listRender=search.trim()==="" ? user.frdInfo: user.frdInfo.filter(u=>u.user.toLowerCase().includes(search.toLowerCase()))
 
   return (
-    <div className="h-screen flex flex-col">  
+    <div className="min-h-screen flex flex-col overflow-hidden">  
      <div className="sticky top-0 z-20 ">
   
   {/* Banner */}
