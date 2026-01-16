@@ -18,7 +18,7 @@ function Home() {
 return () => clearInterval(interval);
   },[])
   return (
-    <div className='min-h-full bg-[#000000]'>
+   
       
       <div className="h-screen flex flex-col bg-gradient-to-b from-[#0b0616] via-[#12091f] to-[#0a0a14]"> 
      
@@ -36,7 +36,7 @@ return () => clearInterval(interval);
         <Tab />
       </div>
     </div>
-    </div>
+    
   )
 }
 
