@@ -54,7 +54,7 @@ useEffect(() => {
   const listRender=search.trim()==="" ? user.frdInfo: user.frdInfo.filter(u=>u.user.toLowerCase().includes(search.toLowerCase()))
 
   return (
-    <div className="min-h-screen flex flex-col overflow-hidden">  
+    <div className="h-screen flex flex-col ">  
      <div className="sticky top-0 z-20 ">
   
   {/* Banner */}
@@ -100,7 +100,7 @@ useEffect(() => {
 
 
 
-      <div className="flex-1 overflow-y-auto no-scrollbar pt-1">
+      <div className="flex-1 overflow-y-auto no-scrollbar overscroll-contain pt-1">
         <ul className="divide-y divide-gray-700">
           {listRender.map((u, i) => {
 
