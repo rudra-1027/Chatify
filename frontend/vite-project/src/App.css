@@ -1,9 +1,12 @@
-/* Hide scrollbar but allow scrolling */
+/* Hide scrollbar but KEEP scrolling (mobile safe) */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE & Edge */
-  scrollbar-width: none;     /* Firefox */
+  overflow-y: auto;                 /* REQUIRED */
+  -webkit-overflow-scrolling: touch; /* iOS momentum scroll */
+
+  -ms-overflow-style: none;         /* IE & Edge */
+  scrollbar-width: none;            /* Firefox */
 }
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none;             /* Chrome, Safari */
+  display: none;                    /* Chrome, Safari */
 }
