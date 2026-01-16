@@ -16,12 +16,30 @@ function App() {
       return document.cookie.includes("token=");
 
     }
-    function Protected({children}){
-      if(!verify()){
-        window.location.href='/login'
-      }
-      return children;
-    }
+    
+function Protected({ children }) {
+  const [allowed, setAllowed] = useState(null);
+
+  useEffect(() => {
+    fetch("/auth/getChatList", {
+      method: "POST",
+      credentials: "include", 
+    })
+      .then(res => {
+        if (res.ok) {
+          setAllowed(true);
+        } else {
+          throw new Error();
+        }
+      })
+      .catch(() => {
+        window.location.href = "/login";
+      });
+  }, []);
+
+  if (allowed === null) return null; 
+  return children;
+}
 
   return (
 
